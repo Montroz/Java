@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
 
-	<h1>JSF 2 dataTable example</h1>
+	<h1>Справочник по сотрудникам</h1>
 	<h:form>
 		<h:dataTable value="#{clientBean.getClients()}" var="cl"
 			styleClass="order-table" headerClass="order-table-header"
@@ -34,7 +34,7 @@
 
 			<h:column>
 				<f:facet name="header">Дата рождения</f:facet>
-    			#{o.date}    				
+    			#{cl.date}    				
     		</h:column>
 
 			<h:column>
@@ -42,6 +42,25 @@
 				<h:commandLink value="Delete" action="#{clientBean.deleteAction(cl)}" />
 			</h:column>
 		</h:dataTable>
+		
+		<!-- Заполнение -->
+		<h2>Заполнение данных сотрудника</h2>
+		<table>
+			<tr>
+				<td>Имя</td>
+				<td><h:inputText size="10" value="#{clientBean.name}" required="true"/></td>
+			</tr>
+			<tr>
+				<td>Фамилия</td>
+				<td><h:inputText size="10" value="#{clientBean.surname}" /></td>
+			</tr>
+<!-- 			<tr> -->
+<!-- 				<td>Дата рождения</td> -->
+<!-- 				<td><h:inputText size="10" value="#{clientBean.date}" /></td>				 -->
+<!-- 			</tr> -->
+		</table>
+
+		<h:commandButton value="Сохранить" action="#{clientBean.addAction}" />		
 
 	</h:form>
 </h:body>

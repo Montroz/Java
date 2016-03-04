@@ -2,7 +2,6 @@ package ru.company.model.dao;
 
 import org.springframework.stereotype.Repository;
 import ru.company.model.entity.Client;
-import ru.company.model.entity.Order;
 import ru.company.util.Utils;
 
 import java.math.BigDecimal;

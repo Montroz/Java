@@ -11,12 +11,12 @@
 <h:body>
 	<h2>Ajax Example</h2>
 	<h:form>
-		<h:inputText id="inputName" value="#{helloBean2.name}"></h:inputText>
+		<h:inputText id="inputName" value="#{helloBean.name}"></h:inputText>
 		<h:commandButton value="Show Message">
 			<f:ajax execute="inputName" render="outputMessage" />
 		</h:commandButton>
 		<h2>
-			<h:outputText id="outputMessage" value="#{helloBean2.sayWelcome}" />
+			<h:outputText id="outputMessage" value="#{helloBean.sayWelcome}" />
 		</h2>
 	</h:form>
 </h:body>
