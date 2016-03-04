@@ -14,26 +14,26 @@ public class HelloBean2 implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String name;
+	private Integer name;
 
 	@Autowired
 	private Manager manager;
 
-	public String getName() {
+	public Integer getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(Integer name) {
 		this.name = name;
 	}
 
-	public String getSayWelcome() {
+	public Integer getSayWelcome() {
 		// check if null?
 		if ("".equals(name) || name == null) {
-			return "";
+			return 0;
 		} else {
 			System.out.println(manager);
-			return "Ajax message : Welcome " + name + manager;
+			return name;
 		}
 	}
 }

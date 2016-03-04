@@ -10,8 +10,10 @@ public class Client {
 
 	private Integer id;
 
-	private String text;
+	private String name;
 
+	private String surname;
+	
     private Date date;
 	
 	private Set<Worker> workers = Collections.EMPTY_SET;
@@ -23,13 +25,21 @@ public class Client {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	public String getText() {
-		return text;
+
+	public String getName() {
+		return name;
 	}
-	
-	public void setText(String text) {
-		this.text = text;
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public Date getDate() {
@@ -55,9 +65,10 @@ public class Client {
 	
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", text=" + text + ", date=" + date + ", workers=" + workers + "]";
+		return "Client [id=" + id + ", name=" + name + ", surname=" + surname + ", date=" + date + ", workers="
+				+ workers + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
