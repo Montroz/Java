@@ -1,4 +1,4 @@
-package ru.company.service;
+package ru.company.jsf.service;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import ru.company.model.entity.Client;
-import ru.company.model.manager.Manager;
+import ru.company.jsf.model.entity.Client;
+import ru.company.jsf.model.manager.Manager;
+
  
 @Component
 @Scope("session")
@@ -26,7 +27,8 @@ public class ClientBean implements Serializable {
 	private Integer id;
 	private String name;
 	private String surname;	
-    private Date date;
+    private Date birthday;
+    private Integer height;
     
     private Integer num = 10000;
 	 
@@ -61,14 +63,16 @@ public class ClientBean implements Serializable {
 		id = null;
 		name = null;
 		surname = null;	
-	    date = null;				
+	    birthday = null;
+	    height = null;
 	}
 	
 	public String editAction(Client client) {
 		id = client.getId();
 		name = client.getName();
 		surname = client.getSurname();
-	    date = client.getDate();
+		birthday = client.getBirthday();
+		height = client.getHeight();
 	    return null;
 	}
 
@@ -100,12 +104,20 @@ public class ClientBean implements Serializable {
 		this.surname = surname;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getBirthday() {
+		return birthday;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public Integer getHeight() {
+		return height;
+	}
+
+	public void setHeight(Integer height) {
+		this.height = height;
 	}
 	
 }

@@ -19,7 +19,7 @@
 					
 		    Select a country {ValueChangeListener class}: 
 		    <h:selectOneMenu value="#{country.localeCode}" onchange="submit()">
-				<f:valueChangeListener type="ru.company.listener.CountryValueListener" />
+				<f:valueChangeListener type="ru.company.jsf.listener.CountryValueListener" />
 				<f:selectItems value="#{country.countryInMap}" />
 			</h:selectOneMenu>
 

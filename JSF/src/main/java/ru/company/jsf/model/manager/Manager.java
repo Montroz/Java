@@ -1,10 +1,11 @@
-package ru.company.model.manager;
+package ru.company.jsf.model.manager;
 
 
-import ru.company.model.dao.ClientDao;
-import ru.company.model.entity.Client;
 
 import java.util.List;
+
+import ru.company.jsf.model.dao.ClientDao;
+import ru.company.jsf.model.entity.Client;
 
 
 public class Manager {

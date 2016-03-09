@@ -1,4 +1,4 @@
-package ru.company.model.entity;
+package ru.company.jsf.model.entity;
 
 
 public class Worker {

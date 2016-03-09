@@ -1,11 +1,12 @@
-package ru.company.listener;
+package ru.company.jsf.listener;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.event.ValueChangeListener;
 
-import ru.company.service.MethodVclBean;
+import ru.company.jsf.service.MethodVclBean;
+
  
 public class CountryValueListener implements ValueChangeListener{
 

@@ -1,15 +1,13 @@
-package ru.company.model.dao;
+package ru.company.jsf.model.dao;
 
 import org.springframework.stereotype.Repository;
-import ru.company.model.entity.Client;
-import ru.company.util.Utils;
 
-import java.math.BigDecimal;
+import ru.company.jsf.model.entity.Client;
+import ru.company.jsf.util.Utils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -27,14 +25,14 @@ public class StubDao implements ClientDao {
 			cl1.setId(1);
 			cl1.setName("Иван");
 			cl1.setSurname("Иванов");
-			cl1.setDate(formatter.parse("01/01/1991"));
+			cl1.setBirthday(formatter.parse("01/01/1991"));
 			clientList.add(cl1);
 			
 			Client cl2 = new Client();
 			cl2.setId(2);
 			cl2.setName("Петр");
 			cl2.setSurname("Петров");
-			cl2.setDate(formatter.parse("02/02/1992"));
+			cl2.setBirthday(formatter.parse("02/02/1992"));
 			clientList.add(cl2);
 			
 		} catch (ParseException e) {

@@ -1,7 +1,8 @@
-package ru.company.model.dao;
+package ru.company.jsf.model.dao;
 
 import java.util.List;
-import ru.company.model.entity.Client;
+
+import ru.company.jsf.model.entity.Client;
 
 
 public interface ClientDao {

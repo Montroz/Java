@@ -1,4 +1,4 @@
-package ru.company.util;
+package ru.company.jsf.util;
 
 public class Utils {
 

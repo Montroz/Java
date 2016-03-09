@@ -13,7 +13,7 @@
 
 	<h1>Справочник по сотрудникам</h1>
 	<h:form>
-		<h:dataTable value="#{clientBean.getClients()}" var="cl"
+		<h:dataTable id="workers" value="#{clientBean.getClients()}" var="cl"
 			styleClass="order-table" headerClass="order-table-header"
 			rowClasses="order-table-odd-row,order-table-even-row">
 
@@ -34,7 +34,7 @@
 
 			<h:column>
 				<f:facet name="header">Дата рождения</f:facet>
-    			#{cl.date}    				
+    			#{cl.birthday}    				
     		</h:column>
 
 			<h:column>
@@ -56,7 +56,7 @@
 			</tr>
 <!-- 			<tr> -->
 <!-- 				<td>Дата рождения</td> -->
-<!-- 				<td><h:inputText size="10" value="#{clientBean.date}" /></td>				 -->
+<!-- 				<td><h:inputText size="10" value="#{clientBean.birthday}" /></td>				 -->
 <!-- 			</tr> -->
 		</table>
 

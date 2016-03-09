@@ -13,42 +13,43 @@
     <!-- Для регистрации бинов и использования аннотаций-->
     <context:component-scan base-package="ru.company" />
     
-    <bean id="manager" class="ru.company.model.manager.Manager">
-        <property name="clientDao" ref="stubDao" />
-    </bean>
+    <bean id="manager" class="ru.company.jsf.model.manager.Manager">
+        <property name="clientDao" ref="jpaClientDao" />
+    </bean>    
+<!--     <property name="clientDao" ref="stubDao" /> -->
 
-    <!-- нужно чтобы использовать @Transactional-->
-<!-- 	<tx:annotation-driven transaction-manager="transactionManager" /> -->
+    <!--     нужно чтобы использовать @Transactional -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-<!-- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
-<!-- 		<property name="entityManagerFactory" ref="entityManagerFactory" /> -->
-<!-- 		<property name="dataSource" ref="dataSource" /> -->
-<!-- 		<property name="jpaDialect" ref="jpaDialect" /> -->
-<!-- 	</bean> -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
 
-<!-- 	<bean id="entityManagerFactory" -->
-<!-- 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
-<!-- 		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" /> -->
-<!-- 		<property name="persistenceUnitName" value="ClientsService" /> -->
-<!-- 		<property name="dataSource" ref="dataSource" /> -->
-<!-- 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" /> -->
-<!-- 		<property name="jpaDialect" ref="jpaDialect" /> -->
-<!-- 	</bean> -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="ClientsService" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
 
-<!-- 	<bean id="jpaVendorAdapter" -->
-<!-- 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
-<!-- 		<property name="database" value="ORACLE" /> -->
-<!-- 		<property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect" /> -->
-<!-- 	</bean> -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@//vm-rgs-02:1521/RGSESB" />
+		<property name="username" value="rgs" />
+		<property name="password" value="rgs" />
+	</bean>
 
-<!-- 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" /> -->
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="database" value="ORACLE" />
+		<property name="databasePlatform" value="org.hibernate.dialect.Oracle10gDialect" />
+	</bean>
 
-<!-- 	<bean id="dataSource" -->
-<!-- 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!-- 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" /> -->
-<!-- 		<property name="url" value="jdbc:oracle:thin:@//vm-alfa-03:1521/dev" /> -->
-<!-- 		<property name="username" value="WSUser" /> -->
-<!-- 		<property name="password" value="WSUserPwd" /> -->
-<!-- 	</bean> -->
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 
 </beans>

@@ -1,4 +1,4 @@
-package ru.company.service;
+package ru.company.jsf.service;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
