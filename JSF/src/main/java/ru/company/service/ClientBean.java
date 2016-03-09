@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -13,7 +16,7 @@ import ru.company.model.manager.Manager;
  
 @Component
 @Scope("session")
-public class ClientBean implements Serializable{
+public class ClientBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +42,8 @@ public class ClientBean implements Serializable{
 		//client.setDate(this.date);
 		manager.addClient(client);
 		num++;
+		
+		clearForm(null);
 		return null;
 	}
  
@@ -51,11 +56,26 @@ public class ClientBean implements Serializable{
 		manager.updateClient(client);
 		return null;
 	}
+	
+	public void clearForm(ActionEvent e) {
+		id = null;
+		name = null;
+		surname = null;	
+	    date = null;				
+	}
+	
+	public String editAction(Client client) {
+		id = client.getId();
+		name = client.getName();
+		surname = client.getSurname();
+	    date = client.getDate();
+	    return null;
+	}
 
 	public void setManager(Manager manager) {
 		this.manager = manager;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
