@@ -15,9 +15,8 @@ import ru.company.jsf.model.entity.Client;
 import ru.company.jsf.model.manager.Manager;
 
  
-@Component
 @Scope("session")
-public class ClientBean implements Serializable {
+public class OldClientBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,26 +30,49 @@ public class ClientBean implements Serializable {
     private Integer height;
     
     private Integer num = 10000;
+	 
+	public List<Client> getClients() { 
+		return manager.getClients(null); 
+	}
 	
 	public String addAction() { 
 		Client client = new Client();
-		//client.setId(num);
+		client.setId(num);
 		client.setName(this.name);
 		client.setSurname(this.surname);
 		//client.setDate(this.date);
 		manager.addClient(client);
 		num++;
 		
-		clearForm();
-		return "directory";
+		clearForm(null);
+		return null;
+	}
+ 
+	public String deleteAction(Client client) {    
+		manager.deleteClient(client.getId());
+		return null;
 	}
 	
-	private void clearForm() {
+	public String updateAction(Client client) {
+		manager.updateClient(client);
+		return null;
+	}
+	
+	public void clearForm(ActionEvent e) {
 		id = null;
 		name = null;
 		surname = null;	
 	    birthday = null;
 	    height = null;
+	}
+	
+	public String editAction(Client client) {
+		id = client.getId();
+		name = client.getName();
+		surname = client.getSurname();
+		birthday = client.getBirthday();
+		height = client.getHeight();
+	    return null;
 	}
 
 	public void setManager(Manager manager) {
