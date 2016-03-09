@@ -27,8 +27,9 @@
   </context-param>
   
   <!-- Welcome page -->
+  <!-- Welcome page -->
   <welcome-file-list>
-    <welcome-file>faces/helloAjax.xhtml</welcome-file>
+    <welcome-file>faces/default.xhtml</welcome-file>
   </welcome-file-list>
   
   <!-- JSF mapping -->
