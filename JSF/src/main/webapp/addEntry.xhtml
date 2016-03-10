@@ -6,10 +6,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<f:metadata>
-	<f:viewParam name="id" value="#{clientBean.id}" />
-	<f:event type="preRenderView" listener="#{clientBean.init}" />
-</f:metadata>
 <h:head>
 	<h:outputStylesheet library="css" name="table-style.css" />
 </h:head>
@@ -21,20 +17,20 @@
 		<table>
 			<tr>
 				<td>Имя</td>
-				<td><h:inputText size="10" value="#{clientBean.client.name}"
+				<td><h:inputText size="10" value="#{clientBean.name}"
 						required="true" /></td>
 			</tr>
 			<tr>
 				<td>Фамилия</td>
-				<td><h:inputText size="10" value="#{clientBean.client.surname}" /></td>
+				<td><h:inputText size="10" value="#{clientBean.surname}" /></td>
 			</tr>
 			<!-- 			<tr> -->
 			<!-- 				<td>Дата рождения</td> -->
-			<!-- 				<td><h:inputText size="10" value="#{clientBean.client.birthday}" /></td>				 -->
+			<!-- 				<td><h:inputText size="10" value="#{clientBean.birthday}" /></td>				 -->
 			<!-- 			</tr> -->
 		</table>
 
-		<h:commandButton value="Сохранить" action="#{clientBean.updateAction}" />
+		<h:commandButton value="Сохранить" action="#{clientBean.addAction}" />
 
 	</h:form>
 </h:body>

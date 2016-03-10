@@ -16,6 +16,10 @@ public class Manager {
         return clientDao.getList(search);
     }
 
+	public Client getClient(Integer id) {
+		return clientDao.getClient(id);
+	}
+	
     public void addClient(Client client) {
         clientDao.addClient(client);
     }
