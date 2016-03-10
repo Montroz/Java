@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import ru.company.jsf.model.manager.Manager;
 
  
 @Component
-@Scope("session")
+@ViewScoped
 public class ClientListBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;

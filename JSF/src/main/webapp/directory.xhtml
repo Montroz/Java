@@ -13,35 +13,35 @@
 
 	<h1>Справочник по сотрудникам</h1>
 	<h:form>
-		<h:dataTable id="workers" value="#{clientListBean.getClients()}" var="cl"
+		<h:dataTable id="workers" value="#{clientListBean.getClients()}" var="client"
 			styleClass="order-table" headerClass="order-table-header"
 			rowClasses="order-table-odd-row,order-table-even-row">
 
 			<h:column>
 				<f:facet name="header">Action</f:facet>
 				<h:link value="Редактировать" outcome="editEntry">
-                    <f:param name="id" value="#{cl.id}" />
+                    <f:param name="id" value="#{client.id}" />
                 </h:link>
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Имя</f:facet>
-    			#{cl.name}   				
+    			#{client.name}   				
     		</h:column>
 
 			<h:column>
 				<f:facet name="header">Фамилия</f:facet>
-    			#{cl.surname}  				
+    			#{client.surname}  				
     		</h:column>
 
 			<h:column>
 				<f:facet name="header">Дата рождения</f:facet>
-    			#{cl.birthday}    				
+    			#{client.birthday}    				
     		</h:column>
 
 			<h:column>
 				<f:facet name="header">Action</f:facet>
-				<h:commandLink value="Удалить" action="#{clientListBean.deleteAction(cl)}" />
+				<h:commandLink value="Удалить" action="#{clientListBean.deleteAction(client)}" />
 			</h:column>
 		</h:dataTable>
 
