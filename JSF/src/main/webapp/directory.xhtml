@@ -8,6 +8,7 @@
 
 <h:head>
 	<h:outputStylesheet library="css" name="table-style.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 <h:body>
 
@@ -18,7 +19,7 @@
 			rowClasses="order-table-odd-row,order-table-even-row">
 
 			<h:column>
-				<f:facet name="header">Action</f:facet>
+				<f:facet name="header" />
 				<h:link value="Редактировать" outcome="editEntry">
                     <f:param name="id" value="#{client.id}" />
                 </h:link>
@@ -36,11 +37,18 @@
 
 			<h:column>
 				<f:facet name="header">Дата рождения</f:facet>
-    			#{client.birthday}    				
+				<h:outputText value="#{client.birthday}">
+				    <f:convertDateTime pattern="MM.dd.yyyy" />
+				</h:outputText>   			   				
+    		</h:column>
+    		
+    		<h:column>
+				<f:facet name="header">Рост</f:facet>
+    			#{client.height}    				
     		</h:column>
 
 			<h:column>
-				<f:facet name="header">Action</f:facet>
+				<f:facet name="header" />
 				<h:commandLink value="Удалить" action="#{clientListBean.deleteAction(client)}" />
 			</h:column>
 		</h:dataTable>

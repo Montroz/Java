@@ -8,6 +8,21 @@
 
 	<display-name>JavaServerFaces</display-name>
   
+  
+  	<filter>
+		<filter-name>forceUTF8CharSet</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>forceUTF8CharSet</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
     <!-- Add Support for Spring -->
     <listener>
 	   <listener-class>
@@ -27,9 +42,8 @@
 	</context-param>
 
 	<!-- Welcome page -->
-	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>faces/default.xhtml</welcome-file>
+		<welcome-file>faces/directory.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<!-- JSF mapping -->

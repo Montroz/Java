@@ -8,6 +8,7 @@
 
 <h:head>
 	<h:outputStylesheet library="css" name="table-style.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 <h:body>
 
@@ -17,16 +18,24 @@
 		<table>
 			<tr>
 				<td>Имя</td>
-				<td><h:inputText size="10" value="#{clientBean.client.name}" required="true" /></td>
+				<td><h:inputText size="10" value="#{clientBean.client.name}"
+						required="true" /></td>
 			</tr>
 			<tr>
 				<td>Фамилия</td>
 				<td><h:inputText size="10" value="#{clientBean.client.surname}" /></td>
 			</tr>
-			<!-- 			<tr> -->
-			<!-- 				<td>Дата рождения</td> -->
-			<!-- 				<td><h:inputText size="10" value="#{clientBean.client.birthday}" /></td>				 -->
-			<!-- 			</tr> -->
+			<tr>
+				<td>Дата рождения</td>
+				<td><h:inputText size="10"
+						value="#{clientBean.client.birthday}">
+						<f:convertDateTime pattern="MM.dd.yyyy" />
+					</h:inputText></td>
+			</tr>
+			<tr>
+				<td>Рост</td>
+				<td><h:inputText size="10" value="#{clientBean.client.height}" /></td>
+			</tr>
 		</table>
 
 		<h:commandButton value="Сохранить" action="#{clientBean.addAction}" />
