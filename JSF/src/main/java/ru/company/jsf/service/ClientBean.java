@@ -7,12 +7,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +24,7 @@ import ru.company.jsf.model.manager.Manager;
 
  
 @Component
-@ViewScoped
+@Scope("request")
 public class ClientBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,20 +32,16 @@ public class ClientBean implements Serializable {
 	@Autowired
 	private Manager manager;
 	
+	@Value("#{request.getParameter('id')}")
 	private Integer id;
+	
 	private Client client;
 	
 	@PostConstruct
 	public void init() {
-		client = new Client();
-	}
-    
-    public void loadClient() {
         if (id == null) {
-            String message = "Bad request. Please use a link from within the system.";
-            FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
-            return;
+        	client = new Client();
+        	return;
         }
 
         client = manager.getClient(id);
@@ -52,17 +51,15 @@ public class ClientBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, 
                 new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
         }
-    }
+	}
 	
 	public String addAction() { 
 		manager.addClient(client);
-		client = null;
 		return "directory?faces-redirect=true";
 	}
 	
 	public String updateAction() { 
 		manager.updateClient(client);
-		client = null;
 		return "directory?faces-redirect=true";
 	}
 

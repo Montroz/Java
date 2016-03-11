@@ -6,10 +6,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<f:metadata>
-	<f:viewParam name="id" value="#{clientBean.id}" />
-	<f:event type="preRenderView" listener="#{clientBean.loadClient}" />
-</f:metadata>
 <h:head>
 	<h:outputStylesheet library="css" name="table-style.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,7 +15,9 @@
 	<h:form>
 		<ui:include src="/template/entryTemplate.xhtml" />
 
-		<h:commandButton value="Сохранить" action="#{clientBean.updateAction}" />
+		<h:commandButton value="Сохранить" action="#{clientBean.updateAction}" >
+		    <f:param name="id" value="#{clientBean.client.id}" />
+		</h:commandButton>
 
 	</h:form>
 </h:body>

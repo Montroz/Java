@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
@@ -17,13 +19,18 @@ import ru.company.jsf.model.manager.Manager;
 
  
 @Component
-@RequestScoped
+@Scope("request")
 public class ClientListBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private Manager manager;
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("Создан ClientListBean");
+	}
 	 
 	public List<Client> getClients() { 
 		return manager.getClients(null); 
