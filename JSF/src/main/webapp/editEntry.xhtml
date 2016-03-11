@@ -22,23 +22,31 @@
 		<table>
 			<tr>
 				<td>Имя</td>
-				<td><h:inputText size="10" value="#{clientBean.client.name}"
+				<td><h:inputText id="name" size="10" value="#{clientBean.client.name}"
 						required="true" /></td>
+				<td><h:message for="name" style="color:red" /></td>
 			</tr>
 			<tr>
 				<td>Фамилия</td>
-				<td><h:inputText size="10" value="#{clientBean.client.surname}" /></td>
+				<td><h:inputText id="surname" size="10" value="#{clientBean.client.surname}"
+				        required="true" /></td>
+				<td><h:message for="surname" style="color:red" /></td>
 			</tr>
 			<tr>
 				<td>Дата рождения</td>
-				<td><h:inputText size="10"
-						value="#{clientBean.client.birthday}">
-						<f:convertDateTime pattern="MM.dd.yyyy" />
+				<td><h:inputText id="birthday" size="10"
+						value="#{clientBean.client.birthday}" required="true">
+						<f:convertDateTime pattern="dd.MM.yyyy" />
 					</h:inputText></td>
+				<td><h:message for="birthday" style="color:red" /></td>
 			</tr>
 			<tr>
-				<td>Рост</td>
-				<td><h:inputText size="10" value="#{clientBean.client.height}" /></td>
+				<td>Рост (см)</td>
+				<td><h:inputText id="height" size="10" value="#{clientBean.client.height}" 
+				        required="true">
+						<f:validateLongRange minimum="50" maximum="300" />
+					</h:inputText></td>
+				<td><h:message for="height" style="color:red" /></td>
 			</tr>
 		</table>
 

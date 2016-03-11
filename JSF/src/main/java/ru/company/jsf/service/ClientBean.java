@@ -57,13 +57,13 @@ public class ClientBean implements Serializable {
 	public String addAction() { 
 		manager.addClient(client);
 		client = null;
-		return "directory";
+		return "directory?faces-redirect=true";
 	}
 	
 	public String updateAction() { 
 		manager.updateClient(client);
 		client = null;
-		return "directory";
+		return "directory?faces-redirect=true";
 	}
 
 	public void setManager(Manager manager) {
