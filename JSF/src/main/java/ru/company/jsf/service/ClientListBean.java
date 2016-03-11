@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
@@ -16,7 +17,7 @@ import ru.company.jsf.model.manager.Manager;
 
  
 @Component
-@ViewScoped
+@RequestScoped
 public class ClientListBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;

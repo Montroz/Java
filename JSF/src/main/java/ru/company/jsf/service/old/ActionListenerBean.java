@@ -1,4 +1,4 @@
-package ru.company.jsf.service;
+package ru.company.jsf.service.old;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

@@ -5,7 +5,8 @@ import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.event.ValueChangeListener;
 
-import ru.company.jsf.service.MethodVclBean;
+import ru.company.jsf.service.old.MethodVclBean;
+
 
  
 public class CountryValueListener implements ValueChangeListener{
