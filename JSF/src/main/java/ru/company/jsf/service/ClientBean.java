@@ -56,16 +56,12 @@ public class ClientBean implements Serializable {
 	
 	public String addAction() { 
 		manager.addClient(client);
-		System.out.println(client.getName());
-		System.out.println(client.getSurname());
-		System.out.println("Мое сообщение");
 		client = null;
 		return "directory";
 	}
 	
 	public String updateAction() { 
 		manager.updateClient(client);
-		System.out.println(Charset.defaultCharset());
 		client = null;
 		return "directory";
 	}
