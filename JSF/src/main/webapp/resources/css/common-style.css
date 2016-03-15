@@ -3,6 +3,11 @@
 	margin: 0 auto;
 }
 
+.right {
+    text-align: right;
+    float: right;
+}
+
 #header{
 	width: 100%;
 	height:100px;
