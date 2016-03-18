@@ -2,13 +2,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
        xsi:schemaLocation="
       http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
       http://www.springframework.org/schema/tx
       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	  http://www.springframework.org/schema/context
-	  http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	  http://www.springframework.org/schema/jee
+	  http://www.springframework.org/schema/jee/spring-jee.xsd">
 
     <!-- Для регистрации бинов и использования аннотаций-->
     <context:component-scan base-package="ru.company" />
@@ -16,40 +19,56 @@
     <bean id="manager" class="ru.company.jsf.model.manager.Manager">
         <property name="clientDao" ref="jpaClientDao" />
     </bean>    
-<!--     <property name="clientDao" ref="stubDao" /> -->
 
     <!--     нужно чтобы использовать @Transactional -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven />
+	
+	 <tx:jta-transaction-manager />
+	 
+	<!-- JDNI name for EntityManagerFactory is defined in src/main/resources/META-INF/persistence.xml -->
+    <jee:jndi-lookup id="entityManagerFactory"
+                     jndi-name="java:jboss/jsf/persistencebasic"
+                     expected-type="javax.persistence.EntityManagerFactory" />
 
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-		<property name="dataSource" ref="dataSource" />
-		<property name="jpaDialect" ref="jpaDialect" />
-	</bean>
+    <!--     берем из datasource jboss -->
+    <jee:jndi-lookup id="dataSource" 
+                     jndi-name="java:jboss/datasources/jsf" 
+                     expected-type="javax.sql.DataSource" />
+    
+    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+	
 
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
-		<property name="persistenceUnitName" value="ClientsService" />
-		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		<property name="jpaDialect" ref="jpaDialect" />
-	</bean>
+<!-- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
+<!-- 		<property name="entityManagerFactory" ref="entityManagerFactory" /> -->
+<!-- 		<property name="dataSource" ref="dataSource" /> -->
+<!-- 		<property name="jpaDialect" ref="jpaDialect" /> -->
+<!-- 	</bean> -->
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://localhost:5432/messageDB" />
-		<property name="username" value="postgres" />
-		<property name="password" value="postgres" />
-	</bean>
+<!-- 	<bean id="entityManagerFactory" -->
+<!-- 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
+<!-- 		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" /> -->
+<!-- 		<property name="persistenceUnitName" value="ClientsService" /> -->
+<!-- 		<property name="dataSource" ref="dataSource" /> -->
+<!-- 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" /> -->
+<!-- 		<property name="jpaDialect" ref="jpaDialect" /> -->
+<!-- 	</bean> -->
 
-	<bean id="jpaVendorAdapter"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-		<property name="database" value="POSTGRESQL" />
-		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
-	</bean>
+<!-- 	<bean id="dataSource" -->
+<!-- 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!-- 		<property name="driverClassName" value="org.postgresql.Driver" /> -->
+<!-- 		<property name="url" value="jdbc:postgresql://localhost:5432/messageDB" /> -->
+<!-- 		<property name="username" value="postgres" /> -->
+<!-- 		<property name="password" value="postgres" /> -->
+<!-- 	</bean> -->
 
-	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+<!-- 	<bean id="jpaVendorAdapter" -->
+<!-- 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
+<!-- 		<property name="database" value="POSTGRESQL" /> -->
+<!-- 		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" /> -->
 
 </beans>
