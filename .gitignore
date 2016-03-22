@@ -1,2 +1,6 @@
 JSF/jsf/.settings/
 JSF/.settings/
+jsf-jboss/target/
+jsf-jboss/.settings/
+jsf-jboss/.classpath
+jsf-jboss/.project
