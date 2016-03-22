@@ -15,5 +15,30 @@
 
     <!-- Для регистрации бинов и использования аннотаций-->
     <context:component-scan base-package="ru" />
+    
+    <bean id="manager" class="ru.company.jsf.model.manager.Manager">
+        <property name="clientDao" ref="jpaClientDao" />
+    </bean>    
+    <!--     <property name="clientDao" ref="stubDao" /> -->
+
+    <!--     нужно чтобы использовать @Transactional -->
+	<tx:annotation-driven />
+	
+	 <tx:jta-transaction-manager />
+	 
+    <!-- 	 делаем лукап -->
+	<!-- JDNI name for EntityManagerFactory is defined in src/main/resources/META-INF/persistence.xml -->
+    <jee:jndi-lookup id="entityManagerFactory"
+                     jndi-name="java:jboss/spring-quickstart/persistencebasic"
+                     expected-type="javax.persistence.EntityManagerFactory" />
+
+    <!--     берем из datasource jboss -->
+    <jee:jndi-lookup id="dataSource" 
+                     jndi-name="java:jboss/datasources/SpringQuickstartDSBasic" 
+                     expected-type="javax.sql.DataSource" />
+    
+    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
 
 </beans>

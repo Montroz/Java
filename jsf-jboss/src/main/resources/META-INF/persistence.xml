@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+	<persistence-unit name="ClientsService">
+		<!-- If you are running in a production environment, add a managed data 
+			source, this example data source is just for development and testing! -->
+		<!-- The datasource is deployed as WEB-INF/spring-quickstart-ds.xml, you 
+			can find it in the source at src/main/webapp/WEB-INF/spring-quickstart-ds.xml -->
+
+		<!-- берем из jboss datasource -->
+		<jta-data-source>java:jboss/datasources/SpringQuickstartDSBasic</jta-data-source>
+
+		<class>ru.company.jsf.model.entity.Client</class>
+
+		<properties>
+            <!--     экспортируем для spring -->
+		    <property name="jboss.entity.manager.factory.jndi.name"
+                      value="java:jboss/spring-quickstart/persistencebasic" />
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
+</persistence>
