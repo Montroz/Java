@@ -20,11 +20,11 @@
             <!--     экспортируем для spring -->
 		    <property name="jboss.entity.manager.factory.jndi.name"
                       value="java:jboss/spring-quickstart/persistencebasic" />
-			<property name="hibernate.archive.autodetection" value="class" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-			<property name="hbm2ddl.auto" value="update" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <property name="hibernate.archive.autodetection" value="class"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hbm2ddl.auto" value="update"/>
 		</properties>
 	</persistence-unit>
 </persistence>
